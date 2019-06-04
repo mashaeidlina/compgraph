@@ -1,0 +1,7 @@
+.idea
+__pycache__
+graph/src/__pycache__
+.cache
+tests/result.txt
+graph/__pycache__
+tests/__pycache__
