@@ -1,4 +1,4 @@
-#ComputeGraph
+# ComputeGraph
 
 This library is designed for easy calculation above tables.
 
@@ -23,7 +23,7 @@ So, the library allows you to define a chain of transformations on the tables so
 are performed separately from their definition.
 Computational graph describes multi-stage processing of several tables, and can be applied for different tables.
 
-###Computational graph interface
+### Computational graph interface
 
 The Computational Graphs consists of inputs and operations on them.
 When you set calculation it does not run. To run a graph, you should call a 'run' method of the Graph class.
@@ -51,9 +51,9 @@ my_graph.reduce(reducer, key='group') # Sets operations
 result = my_graph.run(table=table) # Runs calculations
 ```
 
-###Operations
+### Operations
 There are 5 possible operations with tables:
-####1. Map
+#### 1. Map
 Map is an operation that calls the passed generator (called mapper) from each of the table rows.
 The dicts given by the generator form a result table. 
 
@@ -65,10 +65,10 @@ def mapper(record):
     yield record
 ```
 
-####2. Sort
+#### 2. Sort
 Sort is an operation thar sorts table by some set of columns lexicographically.
 
-####3. Fold
+#### 3. Fold
 Fold "folds" a table into a single row using a binary associative operation.
 The are two required arguments:
 1) the folder function (generator) and
@@ -85,7 +85,7 @@ def sum_columns_folder(state, record):
     return state
 ```
 
-####4. Reduce
+#### 4. Reduce
 
 Reduce is an operation similar to map, but called not for one row of the table, but for all rows with the same key value.
 For the efficient operation, the table supplied to reducer input must be sorted by the columns on which it is run.
@@ -107,7 +107,7 @@ def reducer(records):
         }
 ```
 
-####5. Join
+#### 5. Join
 Join combines information from two tables and return one table.
 The rows of the new table will be created from the rows of the two tables involved in the join.
 There are five join strategies: 1) inner, 2) left, 3) right, 4) full and 5) cross.
@@ -149,14 +149,14 @@ Using the implemented library 4 tasks were solved:
 3) Top words with the most mutual information
 4) Average speed in the city from the hour and day of the week
 
-###Setup
+### Setup
 To setup the library you should go to folder with **setup.py** file.
 Type the following command in bash:
 ```bash
 pip3 install .
 ```
 
-###Files
+### Files
 - **setup.py** - setup file
 - folder 'tests' consists unit-tests for library and tests for 4 solved tasks (**tests/test_graph.py**)
 The tasks' solution is in tests/algorithms.py
